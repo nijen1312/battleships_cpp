@@ -29,6 +29,11 @@
   }
   void Board::setMiss(int y, int x)
   {
+    for(int i=0;i<m_missCount;i+=2)
+    {
+      if(m_missTab[i]==y && m_missTab[i+1]==x)
+        return;
+    }
     m_missTab[m_missCount]=y;
     m_missTab[m_missCount+1]=x;
     m_missCount+=2;

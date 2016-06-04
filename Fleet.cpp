@@ -124,24 +124,24 @@ void Fleet::initializeFleet(bool hostality)
 bool Fleet::checkHit(int y, int x)
 {
   int i,k,xd,yd;
-int placedShipY,placedShipX;
-refresh();
-for(i=0;i<m_fleetSize;i++){
-    for(k=0;k<m_fleetArray[i]->getBattleshipLength();k++){
-      m_fleetArray[i]->calcModuleCoordinates(&placedShipY,&placedShipX,k);
-      xd=abs(x-placedShipX);
-      yd=abs(y-placedShipY);
-      if(xd==0 && yd==0 && (m_fleetArray[i]->getHit(k)==0)){
-        m_fleetArray[i]->setHit(k);
-        m_HP=m_HP-1;
-        return true;
+  int placedShipY,placedShipX;
+  refresh();
+  for(i=0;i<m_fleetSize;i++){
+      for(k=0;k<m_fleetArray[i]->getBattleshipLength();k++){
+        m_fleetArray[i]->calcModuleCoordinates(&placedShipY,&placedShipX,k);
+        xd=abs(x-placedShipX);
+        yd=abs(y-placedShipY);
+        if(xd==0 && yd==0 && (m_fleetArray[i]->getHit(k)==0)){
+          m_fleetArray[i]->setHit(k);
+          m_HP=m_HP-1;
+          return true;
+        }
+        if(xd==0 && yd==0 && (m_fleetArray[i]->getHit(k)==1)){
+          return true;
+        }
       }
-      if(xd==0 && yd==0 && (m_fleetArray[i]->getHit(k)==1)){
-        return true;
-      }
-    }
-}
-return false;
+  }
+  return false;
 }
 void Fleet::printFleet()
 {
@@ -267,7 +267,7 @@ void Fleet::deployFleet()
             }
            }
            wclear(m_pWin);
-           m_pBoard->drawBoard();
+           m_pBoard->drawBoard(this);
            m_fleetArray[i]->printShip();
            wrefresh(m_pWin);
            break;

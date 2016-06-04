@@ -76,7 +76,7 @@ void Ship::printShip(int y, int x)
   attron(A_STANDOUT);
   init_pair(1, COLOR_RED, COLOR_BLACK);
   attron(COLOR_PAIR(1));
-  refresh();
+  // refresh();
   wrefresh(m_pWin);
   // if(m_isPlaced)
   // {
@@ -105,7 +105,7 @@ void Ship::printShip(int y, int x)
 
   		}
   	}
-    refresh();
+    // refresh();
   	wrefresh(m_pWin);
   // }
 }
@@ -149,15 +149,15 @@ bool Ship::checkValidCoordinates(int c)
     calcModuleCoordinates(&futureEndY,&futureEndX,m_battleshipLength-1);
   }
   if(m_orientation){
-    if(futureBegY<1 || futureBegY>19){
+    if(futureBegY<1 || futureBegY>19||futureBegX<2 || futureBegX>38||futureEndX<2 || futureEndX>38){
       return 0;
     }
-    if(futureBegX<2 || futureBegX>38){
-      return 0;
-    }
-    if(futureEndX<2 || futureEndX>38){
-      return 0;
-    }
+    // if(futureBegX<2 || futureBegX>38){
+    //   return 0;
+    // }
+    // if(futureBegX<2 || futureBegX>38){
+    //   return 0;
+    // }
   }else{
     if(futureBegX<2 || futureBegX>38){
       return 0;

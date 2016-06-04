@@ -26,12 +26,8 @@ void Menu::displayMenu(char title[])
 	MENU *myMenu;
 	ITEM **myOptions;
 	ITEM *currentOption;
-	initscr();
-	noecho();
-	cbreak();
-	keypad(stdscr,TRUE);
 	init_pair(1,COLOR_CYAN,COLOR_BLACK);
-  myOptions=new ITEM*[m_numOfOpt];
+  myOptions=new ITEM*[m_numOfOpt+1];
 	for(i=0;i<m_numOfOpt;i++){
 		myOptions[i]=new_item(m_mainMenuOptions[i]," ");
     set_item_userptr(myOptions[i],(void*)m_mainMenuFunctions[i]);

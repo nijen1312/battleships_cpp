@@ -46,6 +46,7 @@ void Game::newGame()
 }
 int Game::barrage()
 {
+  curs_set(1);
 	int c=1;
 	int y=1;
 	int x=2;
@@ -54,6 +55,7 @@ int Game::barrage()
   WINDOW* playerWin=m_playerBoard->getWindow();
   int widthS=m_playerBoard->getWidthStep();
   int heightS=m_playerBoard->getHeightStep();
+  m_auxWin->displayScore(m_playerFleet->getHP(),m_enemyFleet->getHP());
   while(c!='q' && m_enemyFleet->getHP() && m_playerFleet->getHP()){
 		c=wgetch(enemyWin);
 		switch(c){

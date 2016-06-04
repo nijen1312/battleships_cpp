@@ -22,6 +22,10 @@ void exitGame()
 
 
 int main(){
+	initscr();
+	noecho();
+	cbreak();
+	keypad(stdscr,TRUE);
 	srand(time(NULL));
 	curs_set(0);
 	int numberOfOptions=3;

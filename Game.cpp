@@ -37,9 +37,16 @@ void Game::newGame()
   score=this->barrage();
   m_auxWin->displayWinner(score);
   std::ofstream scoreFile;
-  scoreFile.open("score.txt");
-  scoreFile << "Player HP: "<<m_playerFleet->getHP()<<" "<<"Enemy HP: "<<m_enemyFleet->getHP();
-  scoreFile.close();
+  // scoreFile.(ofstream::failbit | ofstream::badbit);
+  // try
+  // {
+    scoreFile.open("score.txt");
+    scoreFile << "Player HP: "<<m_playerFleet->getHP()<<" "<<"Enemy HP: "<<m_enemyFleet->getHP();
+    scoreFile.close();
+  // }catch(std::ofstream::failure e)
+  // {
+    //  std::cout << "Exception opening/reading/closing file\n";
+  // }
   clear();
 	erase();
 	refresh();
@@ -108,6 +115,8 @@ int Game::barrage()
         }else{
           m_playerBoard->setMiss(ry,rx);
         }
+        m_enemyFleet->repair();
+        m_playerFleet->repair();
         m_enemyBoard->drawBoard(m_enemyFleet);
         m_playerBoard->drawBoard(m_playerFleet);
         wmove(enemyWin,y,x);

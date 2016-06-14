@@ -30,6 +30,10 @@ void Fleet::setWindow(WINDOW *p)
 {
   m_pWin=p;
 }
+void Fleet::repair()
+{
+  m_fleetArray[rand()%4]->repair();
+}
 void Fleet::setWidthStep(int ws)
 {
   m_widthStep=ws;
@@ -62,7 +66,7 @@ void Fleet::initializeFleet(bool hostality)
       desTemp=new Destroyer(hostality,destoyerLength,m_pWin,m_widthStep,m_heightStep);
       if(hostality)
       {
-        while(checkColision(desTemp) != desTemp->checkValidCoordinates() )
+        while(!checkColision(desTemp) || !desTemp->checkValidCoordinates() )
         {
           desTemp->setYCoordinates(1+(rand()%10)*m_heightStep);
           desTemp->setXCoordinates(2+(rand()%10)*m_widthStep);
@@ -77,7 +81,7 @@ void Fleet::initializeFleet(bool hostality)
       cruTemp=new Cruiser(hostality,cruiserLength,m_pWin,m_widthStep,m_heightStep);
       if(hostality)
       {
-        while(checkColision(cruTemp) != cruTemp->checkValidCoordinates() )
+        while(!checkColision(cruTemp) || !cruTemp->checkValidCoordinates() )
         {
           cruTemp->setYCoordinates(1+(rand()%10)*m_heightStep);
           cruTemp->setXCoordinates(2+(rand()%10)*m_widthStep);
@@ -92,7 +96,7 @@ void Fleet::initializeFleet(bool hostality)
       patTemp=new Patrol(hostality,patrolLength,m_pWin,m_widthStep,m_heightStep);
       if(hostality)
       {
-        while(checkColision(patTemp) != patTemp->checkValidCoordinates() )
+        while(!checkColision(patTemp) || !patTemp->checkValidCoordinates() )
         {
           patTemp->setYCoordinates(1+(rand()%10)*m_heightStep);
           patTemp->setXCoordinates(2+(rand()%10)*m_widthStep);
@@ -107,7 +111,7 @@ void Fleet::initializeFleet(bool hostality)
       subTemp=new Submarine(hostality,submarineLength,m_pWin,m_widthStep,m_heightStep);
       if(hostality)
       {
-        while(checkColision(subTemp) != subTemp->checkValidCoordinates() )
+        while(!checkColision(subTemp) || !subTemp->checkValidCoordinates() )
         {
           subTemp->setYCoordinates(1+(rand()%10)*m_heightStep);
           subTemp->setXCoordinates(2+(rand()%10)*m_widthStep);

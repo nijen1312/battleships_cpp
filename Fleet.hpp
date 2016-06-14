@@ -17,6 +17,7 @@ class Fleet
     void printFleet();
     int getHP();
     bool checkHit(int y, int x);
+    void repair();
 
   private:
     WINDOW *m_pWin;

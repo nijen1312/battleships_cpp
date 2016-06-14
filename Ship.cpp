@@ -88,7 +88,7 @@ void Ship::printShip(int y, int x)
   		for(i=0,j=0;i<=(m_widthStep*(m_battleshipLength)-m_widthStep);i=i+m_widthStep,j++){
   			if(m_hitsTaken[j]==0){
 
-          if(!m_hostile)
+          // if(!m_hostile)
   				    mvwprintw(m_pWin,y,x+i,"#");
   			}else{
   				mvwprintw(m_pWin,y,x+i,"x");
@@ -97,7 +97,7 @@ void Ship::printShip(int y, int x)
   	}else{
   		for(i=0,j=0;i<=(m_heightStep*(m_battleshipLength)-m_heightStep);i=i+m_heightStep,j++){
   			if(m_hitsTaken[j]==0){
-          if(!m_hostile)
+          // if(!m_hostile)
   				    mvwprintw(m_pWin,y+i,x,"#");
   			}else{
   				mvwprintw(m_pWin,y+i,x,"x");

@@ -1,3 +1,6 @@
+#ifndef AUX_BOX_HPP
+#define AUX_BOX_HPP
+
 #include<ncurses.h>
 class AuxBox
 {
@@ -11,3 +14,5 @@ private:
   WINDOW *m_pWin;
 
 };
+
+#endif
